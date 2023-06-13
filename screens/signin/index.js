@@ -6,7 +6,9 @@ import { View, Text, TextInput, TouchableHighlight, StyleSheet } from "react-nat
 const SignIn = () => {
   const navigation = useNavigation();
   return <View style={styles.container}>
-      <Text style={styles.title}>Log In</Text>
+      <Pressable onPress={() => {
+      navigation.navigate("ScreenAI36");
+    }}><Text style={styles.title}>Log In</Text></Pressable>
       <TextInput style={styles.input} placeholder="Username" autoCapitalize="none" />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
       <TouchableHighlight style={styles.loginButton}>
