@@ -1,82 +1,111 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, TextInput, TouchableOpacity, ScrollView, Image, Button, StyleSheet, Picker, DatePickerIOS } from 'react-native';
 
-const OnboardingScreen = () => {
-  const [romantic, setRomantic] = useState(false);
-  const [marriage, setMarriage] = useState(false);
-  const [marriageChildren, setMarriageChildren] = useState(false);
-  return <View style={styles.container}>
-      <Image source={{
-      uri: 'https://tinyurl.com/42evm3m3'
-    }} style={styles.image} />
-      <Text style={styles.title}>I am Looking for:</Text>
-      <TouchableOpacity style={styles.checkboxContainer} onPress={() => setRomantic(!romantic)}>
-        <Text style={styles.checkboxText}>Romantic Relationship</Text>
-        <Text style={romantic ? styles.checkboxChecked : styles.checkbox} />
+const ProfileScreen = () => {
+  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
+  const [dob, setDob] = useState(new Date());
+  const [gender, setGender] = useState('');
+  const [address, setAddress] = useState({
+    street: '',
+    city: '',
+    zip: '',
+    state: '',
+    country: ''
+  });
+  const [socialAlly, setSocialAlly] = useState({
+    name: '',
+    email: '',
+    location: '',
+    phone: ''
+  });
+  return <ScrollView style={styles.container}>
+      <TouchableOpacity style={styles.photoButton}>
+        <Image source={{
+        uri: 'https://tinyurl.com/42evm3m3'
+      }} style={styles.photoIcon} />
+        <Text>Photos</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.checkboxContainer} onPress={() => setMarriage(!marriage)}>
-        <Text style={styles.checkboxText}>Marriage</Text>
-        <Text style={marriage ? styles.checkboxChecked : styles.checkbox} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.checkboxContainer} onPress={() => setMarriageChildren(!marriageChildren)}>
-        <Text style={styles.checkboxText}>Marriage & children</Text>
-        <Text style={marriageChildren ? styles.checkboxChecked : styles.checkbox} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.nextButton}>
-        <Text style={styles.nextButtonText}>Next</Text>
-      </TouchableOpacity>
-    </View>;
+      <TextInput style={styles.input} placeholder="Full Name" onChangeText={setFullName} value={fullName} />
+      <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} value={username} />
+      <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email} keyboardType="email-address" />
+      <TextInput style={styles.bioInput} placeholder="Bio" onChangeText={setBio} value={bio} multiline />
+      <DatePickerIOS date={dob} onDateChange={setDob} mode="date" />
+      <Picker selectedValue={gender} style={styles.picker} onValueChange={itemValue => setGender(itemValue)}>
+        <Picker.Item label="Female" value="female" />
+        <Picker.Item label="Male" value="male" />
+        <Picker.Item label="Prefer not to say" value="other" />
+      </Picker>
+      <TextInput style={styles.input} placeholder="Street Address" onChangeText={text => setAddress({ ...address,
+      street: text
+    })} value={address.street} />
+      <TextInput style={styles.input} placeholder="City" onChangeText={text => setAddress({ ...address,
+      city: text
+    })} value={address.city} />
+      <TextInput style={styles.input} placeholder="Zip Code" onChangeText={text => setAddress({ ...address,
+      zip: text
+    })} value={address.zip} />
+      <TextInput style={styles.input} placeholder="State" onChangeText={text => setAddress({ ...address,
+      state: text
+    })} value={address.state} />
+      <TextInput style={styles.input} placeholder="Country" onChangeText={text => setAddress({ ...address,
+      country: text
+    })} value={address.country} />
+      <Button title="Edit" onPress={() => {}} />
+      <Picker selectedValue={socialAlly.name} style={styles.picker} onValueChange={itemValue => setSocialAlly({ ...socialAlly,
+      name: itemValue
+    })}>
+        <Picker.Item label="Select Social Ally" value="" />
+      </Picker>
+      <TextInput style={styles.input} placeholder="Social Ally Email" onChangeText={text => setSocialAlly({ ...socialAlly,
+      email: text
+    })} value={socialAlly.email} />
+      <TextInput style={styles.input} placeholder="Social Ally Location" onChangeText={text => setSocialAlly({ ...socialAlly,
+      location: text
+    })} value={socialAlly.location} />
+      <TextInput style={styles.input} placeholder="Social Ally Phone Number" onChangeText={text => setSocialAlly({ ...socialAlly,
+      phone: text
+    })} value={socialAlly.phone} />
+      <Button title="Edit/Remove Social Ally" onPress={() => {}} />
+      <Button title="Save" onPress={() => {}} />
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff'
+    padding: 20
   },
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 30
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20
-  },
-  checkboxContainer: {
+  photoButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: 20
   },
-  checkboxText: {
-    fontSize: 18,
+  photoIcon: {
+    width: 30,
+    height: 30,
     marginRight: 10
   },
-  checkbox: {
-    width: 20,
-    height: 20,
+  input: {
+    height: 40,
+    borderColor: 'gray',
     borderWidth: 1,
-    borderColor: '#000'
+    marginBottom: 20,
+    paddingLeft: 10
   },
-  checkboxChecked: {
-    width: 20,
-    height: 20,
+  bioInput: {
+    height: 100,
+    borderColor: 'gray',
     borderWidth: 1,
-    borderColor: '#000',
-    backgroundColor: '#000'
+    marginBottom: 20,
+    paddingLeft: 10,
+    textAlignVertical: 'top'
   },
-  nextButton: {
-    marginTop: 30,
-    backgroundColor: '#000',
-    paddingHorizontal: 40,
-    paddingVertical: 10,
-    borderRadius: 5
-  },
-  nextButtonText: {
-    color: '#fff',
-    fontSize: 18
+  picker: {
+    height: 50,
+    marginBottom: 20
   }
 });
-export default OnboardingScreen;
+export default ProfileScreen;
