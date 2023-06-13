@@ -1,19 +1,19 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 const App = () => {
   return <View style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.icon} source={{
-        uri: 'https://tinyurl.com/42evm3m3'
+        uri: "https://tinyurl.com/42evm3m3"
       }} />
         <Image style={styles.icon} source={{
-        uri: 'https://tinyurl.com/42evm3m3'
+        uri: "https://tinyurl.com/42evm3m3"
       }} />
       </View>
       <View style={styles.mainMenu}>
         <Image style={styles.icon} source={{
-        uri: 'https://tinyurl.com/42evm3m3'
+        uri: "https://tinyurl.com/42evm3m3"
       }} />
         <TouchableOpacity style={styles.button}>
           <Text>Message</Text>
@@ -48,11 +48,11 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: "space-between"
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 10
   },
   icon: {
@@ -60,17 +60,17 @@ const styles = StyleSheet.create({
     height: 30
   },
   mainMenu: {
-    alignItems: 'center'
+    alignItems: "center"
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: "#4CAF50",
     padding: 10,
     margin: 10,
     borderRadius: 5
   },
   bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
     paddingBottom: 10
   }
 });
