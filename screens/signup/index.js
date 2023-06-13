@@ -25,9 +25,11 @@ const Signup = () => {
         <CheckBox value={isChecked} onValueChange={setIsChecked} style={styles.checkbox} />
         <Text style={styles.label}>
           I agree to the{" "}
-          <Text onPress={handleTermsAndPrivacy} style={styles.link}>
+          <Pressable onPress={() => {
+          navigation.navigate("termsAndConditions");
+        }}><Text onPress={handleTermsAndPrivacy} style={styles.link}>
             Terms and Conditions
-          </Text>{" "}
+          </Text></Pressable>{" "}
           and{" "}
           <Pressable onPress={() => {
           navigation.navigate("privacyPolicy");
