@@ -75,7 +75,9 @@ const ProfileScreen = () => {
     })} value={socialAlly.phone} />
       <Button title="Edit/Remove Social Ally" onPress={() => {}} />
       <Button title="Save" onPress={() => {}} />
-    </ScrollView>;
+    <Pressable onPress={() => {
+      navigation.navigate("ScreenAI33");
+    }}><Text style={styles.gLWoNaUx}>{"Profile Setup 1"}</Text></Pressable></ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -111,6 +113,13 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     marginBottom: 20
+  },
+  gLWoNaUx: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
   }
 });
 export default ProfileScreen;
