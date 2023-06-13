@@ -1,7 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, StyleSheet, TextInput, CheckBox } from "react-native";
 
 const Signup = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -26,9 +29,11 @@ const Signup = () => {
             Terms and Conditions
           </Text>{" "}
           and{" "}
-          <Text onPress={handleTermsAndPrivacy} style={styles.link}>
+          <Pressable onPress={() => {
+          navigation.navigate("privacyPolicy");
+        }}><Text onPress={handleTermsAndPrivacy} style={styles.link}>
             Privacy Policy
-          </Text>
+          </Text></Pressable>
         </Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
