@@ -36,7 +36,7 @@ const ProfileScreen = () => {
       <TextInput style={styles.input} placeholder="Full Name" onChangeText={setFullName} value={fullName} />
       <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} value={username} />
       <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email} keyboardType="email-address" />
-      <TextInput style={styles.bioInput} placeholder="Bio" onChangeText={setBio} value={bio} multiline />
+      <TextInput style={styles.bioInput} placeholder="Bio" onChangeText={setBio} multiline value="bio" />
       <DatePickerIOS date={dob} onDateChange={setDob} mode="date" />
       <Picker selectedValue={gender} style={styles.picker} onValueChange={itemValue => setGender(itemValue)}>
         <Picker.Item label="Female" value="female" />
@@ -77,7 +77,9 @@ const ProfileScreen = () => {
       <Button title="Save" onPress={() => {}} />
     <Pressable onPress={() => {
       navigation.navigate("ScreenAI33");
-    }}><Text style={styles.gLWoNaUx}>{"Profile Setup 1"}</Text></Pressable></ScrollView>;
+    }}><Text style={styles.gLWoNaUx}>{"Profile Setup 1"}</Text></Pressable><Text style={styles.twsQRXbu}>Lorem ipsum…</Text><Pressable onPress={() => {
+      navigation.navigate("ScreenAI34");
+    }}><Text style={styles.GeKVbWCm}>{"Profile Setup 2"}</Text></Pressable></ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -115,6 +117,20 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   gLWoNaUx: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
+  },
+  twsQRXbu: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
+  },
+  GeKVbWCm: {
     width: 100,
     height: 50,
     lineHeight: 14,
