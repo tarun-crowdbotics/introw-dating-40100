@@ -1,3 +1,4 @@
+import { Pressable } from "react-native";
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
@@ -57,7 +58,7 @@ const Camera = () => {
       }
     }} />
       <TouchableOpacity onPress={() => actionSheet.current.show()} style={styles.photoBtn}>
-        <Text style={styles.photoBtnTxt}>{buttonText}</Text>
+        <Pressable><Text style={styles.photoBtnTxt}>{buttonText}</Text></Pressable>
       </TouchableOpacity>
     </View>;
 };
