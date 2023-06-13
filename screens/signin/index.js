@@ -17,7 +17,9 @@ const SignIn = () => {
         navigation.navigate("forgotPassword");
       }}><Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text></Pressable>
       </TouchableHighlight>
-    </View>;
+    <Pressable onPress={() => {
+      navigation.navigate("ScreenAI36");
+    }}><Text style={styles.fQkRKvQb}>{"Log In"}</Text></Pressable></View>;
 };
 
 const styles = StyleSheet.create({
@@ -60,6 +62,13 @@ const styles = StyleSheet.create({
   forgotPasswordButtonText: {
     color: "#000000",
     textDecorationLine: "underline"
+  },
+  fQkRKvQb: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
   }
 });
 export default SignIn;
