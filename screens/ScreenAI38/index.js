@@ -1,13 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React from 'react';
 import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
 
 const SplashScreen = () => {
+  const navigation = useNavigation();
   return <View style={styles.container}>
       <StatusBar hidden />
       <Image source={{
       uri: 'https://tinyurl.com/42evm3m3'
     }} style={styles.logo} />
-      <Text style={styles.title}>Welcome to MyApp</Text>
+      <Pressable onPress={() => {
+      navigation.navigate("signup");
+    }}><Text style={styles.title}>Welcome to MyApp</Text></Pressable>
     </View>;
 };
 
