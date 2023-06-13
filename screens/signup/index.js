@@ -39,7 +39,9 @@ const Signup = () => {
         </Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Sign up</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("signin");
+      }}><Text style={styles.buttonText}>Sign up</Text></Pressable>
       </TouchableOpacity>
       <Text style={styles.orText}>Or</Text>
       <View style={styles.socialContainer}>
