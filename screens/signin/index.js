@@ -19,7 +19,7 @@ const SignIn = () => {
       </TouchableHighlight>
     <Pressable onPress={() => {
       navigation.navigate("ScreenAI36");
-    }}><Text style={styles.fQkRKvQb}>{"Log In"}</Text></Pressable></View>;
+    }}><Text style={styles.fQkRKvQb}>{"Social Ally - Log In"}</Text></Pressable></View>;
 };
 
 const styles = StyleSheet.create({
