@@ -1,117 +1,75 @@
-import { StyleSheet } from "react-native";
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, ScrollView, Button, Picker, DatePickerAndroid } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const UserProfileScreen = () => {
-  const [fullName, setFullName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [bio, setBio] = useState('');
-  const [dob, setDob] = useState('');
-  const [gender, setGender] = useState('');
-  const [address, setAddress] = useState({
-    street: '',
-    city: '',
-    zip: '',
-    state: '',
-    country: ''
-  });
-  const [socialAlly, setSocialAlly] = useState({
-    name: '',
-    email: '',
-    location: '',
-    phone: ''
-  });
+const SelectedOfferScreen = () => {
+  const [cardNumber, setCardNumber] = useState('');
+  const [expirationDate, setExpirationDate] = useState('');
+  const [cvv, setCvv] = useState('');
+  const [cardHolderName, setCardHolderName] = useState('');
 
-  const openDatePicker = async () => {
-    try {
-      const {
-        action,
-        year,
-        month,
-        day
-      } = await DatePickerAndroid.open({
-        date: new Date()
-      });
-
-      if (action !== DatePickerAndroid.dismissedAction) {
-        setDob(`${month + 1}/${day}/${year}`);
-      }
-    } catch ({
-      code,
-      message
-    }) {
-      console.warn('Cannot open date picker', message);
-    }
+  const handleConfirm = () => {// Handle confirmation logic here
   };
 
-  return <ScrollView>
-      <View>
-        <Image source={{
-        uri: 'https://tinyurl.com/42evm3m3'
-      }} style={_styles.LHWEGKZV} />
-        <TouchableOpacity>
-          <Text>Change Profile Photo</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity>
-        <Text>Add Photos</Text>
+  return <View style={styles.container}>
+      <Image style={styles.offerImage} source={{
+      uri: 'https://tinyurl.com/42evm3m3'
+    }} />
+      <Text style={styles.offerTitle}>Selected Offer/Package/Bundle</Text>
+      <Text style={styles.inputLabel}>Card number</Text>
+      <TextInput style={styles.input} onChangeText={setCardNumber} value={cardNumber} keyboardType="number-pad" />
+      <Text style={styles.inputLabel}>Expiration date</Text>
+      <TextInput style={styles.input} onChangeText={setExpirationDate} value={expirationDate} keyboardType="number-pad" />
+      <Text style={styles.inputLabel}>CVV</Text>
+      <TextInput style={styles.input} onChangeText={setCvv} value={cvv} keyboardType="number-pad" />
+      <Text style={styles.inputLabel}>Card holder name</Text>
+      <TextInput style={styles.input} onChangeText={setCardHolderName} value={cardHolderName} />
+      <TouchableOpacity style={styles.confirmButton} onPress={handleConfirm}>
+        <Text style={styles.confirmButtonText}>Confirm</Text>
       </TouchableOpacity>
-      <TextInput placeholder="Full Name" value={fullName} onChangeText={setFullName} />
-      <TextInput placeholder="Username" value={username} onChangeText={setUsername} />
-      <TextInput placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" />
-      <TextInput placeholder="Bio" value={bio} onChangeText={setBio} multiline numberOfLines={4} />
-      <TouchableOpacity onPress={openDatePicker}>
-        <Text>{dob || 'Select Date of Birth'}</Text>
-      </TouchableOpacity>
-      <Picker selectedValue={gender} onValueChange={itemValue => setGender(itemValue)}>
-        <Picker.Item label="Select Gender" value="" />
-        <Picker.Item label="Female" value="female" />
-        <Picker.Item label="Male" value="male" />
-      </Picker>
-      <TextInput placeholder="Street Address" value={address.street} onChangeText={text => setAddress({ ...address,
-      street: text
-    })} />
-      <TextInput placeholder="City" value={address.city} onChangeText={text => setAddress({ ...address,
-      city: text
-    })} />
-      <TextInput placeholder="Zip Code" value={address.zip} onChangeText={text => setAddress({ ...address,
-      zip: text
-    })} />
-      <TextInput placeholder="State" value={address.state} onChangeText={text => setAddress({ ...address,
-      state: text
-    })} />
-      <TextInput placeholder="Country" value={address.country} onChangeText={text => setAddress({ ...address,
-      country: text
-    })} />
-      <Button title="Edit" onPress={() => console.log('Edit')} />
-      <Picker selectedValue={socialAlly.name} onValueChange={itemValue => setSocialAlly({ ...socialAlly,
-      name: itemValue
-    })}>
-        <Picker.Item label="Select Social Ally" value="" />
-        <Picker.Item label="Ally 1" value="ally1" />
-        <Picker.Item label="Ally 2" value="ally2" />
-      </Picker>
-      <TextInput placeholder="Social Ally Email" value={socialAlly.email} onChangeText={text => setSocialAlly({ ...socialAlly,
-      email: text
-    })} keyboardType="email-address" />
-      <TextInput placeholder="Social Ally Location" value={socialAlly.location} onChangeText={text => setSocialAlly({ ...socialAlly,
-      location: text
-    })} />
-      <TextInput placeholder="Social Ally Phone Number" value={socialAlly.phone} onChangeText={text => setSocialAlly({ ...socialAlly,
-      phone: text
-    })} keyboardType="phone-pad" />
-      <Button title="Edit/Remove Social Ally" onPress={() => console.log('Edit/Remove Social Ally')} />
-      <Button title="Save" onPress={() => console.log('Save')} />
-    </ScrollView>;
+    </View>;
 };
 
-export default UserProfileScreen;
-
-const _styles = StyleSheet.create({
-  LHWEGKZV: {
-    width: 100,
-    height: 100,
-    borderRadius: 50
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingTop: 40
+  },
+  offerImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    marginBottom: 20
+  },
+  offerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20
+  },
+  inputLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginBottom: 20
+  },
+  confirmButton: {
+    backgroundColor: '#007AFF',
+    borderRadius: 5,
+    paddingVertical: 10,
+    alignItems: 'center'
+  },
+  confirmButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff'
   }
 });
+export default SelectedOfferScreen;
