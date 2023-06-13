@@ -119,7 +119,7 @@ const Button = props => {
       borderColor: props.borderColor ? props.borderColor : "#000000"
     }]}>
         <Pressable onPress={() => {
-        navigation.navigate("Splash");
+        navigation.navigate("ScreenAI38");
       }}><Text style={[btnStyles.text, {
           color: props.color ? props.color : "#ffffff"
         }]}>{props.children}</Text></Pressable>
