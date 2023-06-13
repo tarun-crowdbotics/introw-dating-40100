@@ -12,7 +12,6 @@ const Camera = () => {
   const options = useContext(OptionsContext);
   const gOptions = useContext(GlobalOptionsContext); // eslint-disable-next-line no-unused-vars
 
-  const [isLoading, setLoading] = useState(false);
   const ImagePickerOptions = ["Take Photo", "Choose from Gallery", "Cancel"];
   const [data, setData] = useState([]);
   const {

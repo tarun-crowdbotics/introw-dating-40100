@@ -29,9 +29,7 @@ const ProfileScreen = () => {
         <Image source={{
         uri: 'https://tinyurl.com/42evm3m3'
       }} style={styles.photoIcon} />
-        <Pressable onPress={() => {
-        navigation.navigate("Camera");
-      }}><Text>Photos</Text></Pressable>
+        <Text>Photos</Text>
       </TouchableOpacity>
       <TextInput style={styles.input} placeholder="Full Name" onChangeText={setFullName} value={fullName} />
       <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} value={username} />
@@ -77,9 +75,7 @@ const ProfileScreen = () => {
       <Button title="Save" onPress={() => {}} />
     <Pressable onPress={() => {
       navigation.navigate("ScreenAI33");
-    }}><Text style={styles.gLWoNaUx}>{"Profile Setup 1"}</Text></Pressable><Text style={styles.twsQRXbu}>Lorem ipsum…</Text><Pressable onPress={() => {
-      navigation.navigate("ScreenAI34");
-    }}><Text style={styles.GeKVbWCm}>{"Profile Setup 2"}</Text></Pressable></ScrollView>;
+    }}><Text style={styles.gLWoNaUx}>{"Profile Setup 1"}</Text></Pressable><Text style={styles.twsQRXbu}>Lorem ipsum…</Text><Text style={styles.GeKVbWCm}>{"Profile Setup 2"}</Text></ScrollView>;
 };
 
 const styles = StyleSheet.create({
