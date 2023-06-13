@@ -10,7 +10,9 @@ const SignIn = () => {
       <TextInput style={styles.input} placeholder="Username" autoCapitalize="none" />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
       <TouchableHighlight style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Log In</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("ScreenAI35");
+      }}><Text style={styles.loginButtonText}>Log In</Text></Pressable>
       </TouchableHighlight>
       <TouchableHighlight style={styles.forgotPasswordButton}>
         <Pressable onPress={() => {
