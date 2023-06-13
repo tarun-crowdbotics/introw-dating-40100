@@ -1,7 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, ScrollView, Image, Button, StyleSheet, Picker, DatePickerIOS } from 'react-native';
 
 const ProfileScreen = () => {
+  const navigation = useNavigation();
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +29,9 @@ const ProfileScreen = () => {
         <Image source={{
         uri: 'https://tinyurl.com/42evm3m3'
       }} style={styles.photoIcon} />
-        <Text>Photos</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("Camera");
+      }}><Text>Photos</Text></Pressable>
       </TouchableOpacity>
       <TextInput style={styles.input} placeholder="Full Name" onChangeText={setFullName} value={fullName} />
       <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} value={username} />
