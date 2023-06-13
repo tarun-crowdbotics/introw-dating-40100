@@ -29,7 +29,9 @@ const ProfileScreen = () => {
         <Image source={{
         uri: 'https://tinyurl.com/42evm3m3'
       }} style={styles.photoIcon} />
-        <Text>Photos</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("Camera");
+      }}><Text>Photos</Text></Pressable>
       </TouchableOpacity>
       <TextInput style={styles.input} placeholder="Full Name" onChangeText={setFullName} value={fullName} />
       <TextInput style={styles.input} placeholder="Username" onChangeText={setUsername} value={username} />
