@@ -1,7 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React from "react";
 import { View, Text, TextInput, TouchableHighlight, StyleSheet } from "react-native";
 
 const SignIn = () => {
+  const navigation = useNavigation();
   return <View style={styles.container}>
       <Text style={styles.title}>Log In</Text>
       <TextInput style={styles.input} placeholder="Username" autoCapitalize="none" />
@@ -10,7 +13,9 @@ const SignIn = () => {
         <Text style={styles.loginButtonText}>Log In</Text>
       </TouchableHighlight>
       <TouchableHighlight style={styles.forgotPasswordButton}>
-        <Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("forgotPassword");
+      }}><Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text></Pressable>
       </TouchableHighlight>
     </View>;
 };
