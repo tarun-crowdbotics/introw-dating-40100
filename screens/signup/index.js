@@ -18,7 +18,7 @@ const Signup = () => {
   };
 
   return <View style={styles.container} onPress={() => {
-    navigation.navigate("privacyPolicy");
+    navigation.navigate("termsAndConditions");
   }}>
       <Text style={styles.heading}>Sign up</Text>
       <TextInput style={styles.input} placeholder="Username" value={username} onChangeText={setUsername} />
