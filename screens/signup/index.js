@@ -17,7 +17,9 @@ const Signup = () => {
     console.log("Terms and Privacy");
   };
 
-  return <View style={styles.container}>
+  return <View style={styles.container} onPress={() => {
+    navigation.navigate("privacyPolicy");
+  }}>
       <Text style={styles.heading}>Sign up</Text>
       <TextInput style={styles.input} placeholder="Username" value={username} onChangeText={setUsername} />
       <TextInput style={styles.input} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
