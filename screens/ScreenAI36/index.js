@@ -35,7 +35,7 @@ const App = () => {
             <Text>Connection History</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      <Text style={styles.fSNdVrgi}>Lorem ipsum…</Text></ScrollView>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.button}>
           <Text>Home</Text>
@@ -93,6 +93,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#ccc',
     padding: 10
+  },
+  fSNdVrgi: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
   }
 });
 export default App;
