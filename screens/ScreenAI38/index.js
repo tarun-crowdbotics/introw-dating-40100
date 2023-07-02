@@ -7,9 +7,11 @@ const SplashScreen = () => {
   const navigation = useNavigation();
   return <View style={styles.container}>
       <StatusBar hidden />
-      <Image source={{
-      uri: 'https://tinyurl.com/42evm3m3'
-    }} style={styles.logo} />
+      <Pressable onPress={() => {
+      navigation.navigate("signup");
+    }}><Image source={{
+        uri: 'https://tinyurl.com/42evm3m3'
+      }} style={styles.logo} /></Pressable>
       <Pressable onPress={() => {
       navigation.navigate("signup");
     }}><Text style={styles.title}>Welcome to MyApp</Text></Pressable>
