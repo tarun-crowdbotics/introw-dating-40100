@@ -1,4 +1,4 @@
-package com.shy_dust_40100;
+package com.introwdating;
 
 import com.facebook.react.ReactActivity;
 
