@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: screenHorizontalPadding,
   },
   heading: {
     fontSize: FontSizes.S34,
@@ -41,6 +40,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.loginBackground,
     paddingHorizontal: screenHorizontalPadding,
     paddingVertical: '10%',
+    marginHorizontal: screenHorizontalPadding,
   },
   emailLabel: {
     marginStart: 5,

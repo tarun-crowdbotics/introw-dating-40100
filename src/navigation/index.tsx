@@ -11,6 +11,7 @@ const Navigator: FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Onboarding" component={OnBoarding} />
         <Stack.Screen name="LoginModule" component={LoginNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

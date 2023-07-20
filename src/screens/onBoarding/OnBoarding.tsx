@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { ListRenderItemInfo, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import LinearGradient from 'react-native-linear-gradient';
+import { OnBoardingIcon } from '../../assets/svg';
+import AppGradient from '../../components/gradient';
+import AppText from '../../components/text';
 import styles from './styles';
 
 type SlidesDataType = {
@@ -13,37 +15,61 @@ type SlidesDataType = {
 const slidesData: Array<SlidesDataType> = [
   {
     id: '1',
-    title: 'Onboarding Tutorial 1 ',
+    title: 'Get our best recommendations',
     description:
-      'Sample content here that talks about what the app is all about and what it can be used for. The USPs of the app and other attributes about the product. The same need to be sampled and procured from the business',
+      'Imagine you have a stock market application with main focus about market volatility, recommendation, bullish or bearish market for beginner until expert, and you need a unique and stand out, while still engaging onboarding screen that grasp people attention, and instantly feel that this is the right choice',
   },
   {
     id: '2',
-    title: 'Onboarding Tutorial 2',
+    title: 'Get our best recommendations',
     description:
-      'Sample content here that talks about what the app is all about and what it can be used for. The USPs of the app and other attributes about the product. The same need to be sampled and procured from the business',
+      'Imagine you have a stock market application with main focus about market volatility, recommendation, bullish or bearish market for beginner until expert, and you need a unique and stand out, while still engaging onboarding screen that grasp people attention, and instantly feel that this is the right choice',
   },
   {
     id: '3',
-    title: 'Onboarding Tutorial 3',
+    title: 'Get our best recommendations',
     description:
-      'Sample content here that talks about what the app is all about and what it can be used for. The USPs of the app and other attributes about the product. The same need to be sampled and procured from the business.The same need to be sampled and procured from the business ',
+      'Imagine you have a stock market application with main focus about market volatility, recommendation, bullish or bearish market for beginner until expert, and you need a unique and stand out, while still engaging onboarding screen that grasp people attention, and instantly feel that this is the right choice',
   },
 ];
 
+const SkipButton: React.FC = () => {
+  return <AppText style={styles.skipButtonText}>Skip</AppText>;
+};
+
 const OnBoarding: FC = () => {
-  const renderItem: FC<ListRenderItemInfo<SlidesDataType>> = ({
-    item,
-    index,
-  }) => {
+  function onDone() {}
+
+  const renderSkipButton = () => {
+    return <SkipButton />;
+  };
+
+  const renderNextButton = () => {
+    return (
+      <View style={styles.nextButton}>
+        <AppText style={styles.nextTitle}>{'Next'}</AppText>
+      </View>
+    );
+  };
+
+  const renderDoneButton = () => {
+    return (
+      <View style={styles.nextButton}>
+        <AppText style={styles.nextTitle}>{'Continue'}</AppText>
+      </View>
+    );
+  };
+
+  const renderItem: FC<ListRenderItemInfo<SlidesDataType>> = ({ item }) => {
     return (
       <View style={styles.container}>
-        <LinearGradient
-          colors={['#97ECFF', '#DAF0FF', '#FFEFE2', '#FFFFFF']}
-          start={{ x: 0, y: 0 }} // Start point (0, 0) - top left
-          end={{ x: 0, y: 1 }} // End point (0, 1) - bottom left
-          style={styles.gradient}
-        />
+        <AppGradient>
+          <View style={styles.gradientContainer}>
+            <OnBoardingIcon />
+            <AppText style={styles.title}>{item.title}</AppText>
+            <AppText style={styles.description}>{item.description}</AppText>
+          </View>
+        </AppGradient>
       </View>
     );
   };
@@ -53,6 +79,14 @@ const OnBoarding: FC = () => {
         renderItem={renderItem}
         data={slidesData}
         showDoneButton={true}
+        onDone={onDone}
+        showSkipButton
+        renderSkipButton={renderSkipButton}
+        renderNextButton={renderNextButton}
+        renderDoneButton={renderDoneButton}
+        dotStyle={styles.dotStyle}
+        activeDotStyle={styles.activeDotStyle}
+        automaticallyAdjustContentInsets
       />
     </View>
   );

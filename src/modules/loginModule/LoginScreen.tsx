@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import AppButton from '../../components/button';
+import AppGradient from '../../components/gradient';
 import AppInput from '../../components/input';
 import AppText from '../../components/text';
 import { DONT_HAVE_ACC, EMAIL_ADD, WELCOME_BACK } from '../../util/strings';
@@ -50,83 +51,85 @@ const LoginScreen: LoginStackComponent<'Login'> = ({ navigation }) => {
     <KeyboardAwareScrollView
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="always">
-      <View style={styles.subContainer}>
-        <AppText style={styles.heading}>{WELCOME_BACK}</AppText>
-        <AppText style={styles.headingInfo}>
-          {DONT_HAVE_ACC}{' '}
-          <AppText
-            style={styles.signupHeading}
-            onPress={() => Alert.alert('yo')}>
-            {SIGN_UP}
+      <AppGradient>
+        <View style={styles.subContainer}>
+          <AppText style={styles.heading}>{WELCOME_BACK}</AppText>
+          <AppText style={styles.headingInfo}>
+            {DONT_HAVE_ACC}{' '}
+            <AppText
+              style={styles.signupHeading}
+              onPress={() => Alert.alert('yo')}>
+              {SIGN_UP}
+            </AppText>
           </AppText>
-        </AppText>
-        <Formik
-          initialValues={{ email: '', password: '' }}
-          onSubmit={handleLogin}
-          validationSchema={validationSchema}>
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            touched,
-            errors,
-          }) => (
-            <View>
-              <AppText style={styles.emailLabel}>
-                {EMAIL_ADD} <AppText style={styles.astrick}>*</AppText>
-              </AppText>
-              <AppInput
-                style={styles.input}
-                placeholder={EMAIL}
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values.email}
-                errorMessage={
-                  touched.email && errors?.email ? errors.email : undefined
-                }
-              />
-              <AppText style={[styles.emailLabel, styles.passwordLabel]}>
-                {PASSWORD} <AppText style={styles.astrick}>*</AppText>
-              </AppText>
-              <AppInput
-                style={styles.input}
-                placeholder={PASSWORD}
-                secureTextEntry={secure}
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                value={values.password}
-                errorMessage={
-                  touched.password && errors?.password
-                    ? errors?.password
-                    : undefined
-                }
-                rightIcon={{
-                  type: 'ionicon',
-                  name: secure ? 'eye-off' : 'eye',
-                  onPress: () => setSecure(!secure),
-                }}
-              />
+          <Formik
+            initialValues={{ email: '', password: '' }}
+            onSubmit={handleLogin}
+            validationSchema={validationSchema}>
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              touched,
+              errors,
+            }) => (
+              <View>
+                <AppText style={styles.emailLabel}>
+                  {EMAIL_ADD} <AppText style={styles.astrick}>*</AppText>
+                </AppText>
+                <AppInput
+                  style={styles.input}
+                  placeholder={EMAIL}
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values.email}
+                  errorMessage={
+                    touched.email && errors?.email ? errors.email : undefined
+                  }
+                />
+                <AppText style={[styles.emailLabel, styles.passwordLabel]}>
+                  {PASSWORD} <AppText style={styles.astrick}>*</AppText>
+                </AppText>
+                <AppInput
+                  style={styles.input}
+                  placeholder={PASSWORD}
+                  secureTextEntry={secure}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  value={values.password}
+                  errorMessage={
+                    touched.password && errors?.password
+                      ? errors?.password
+                      : undefined
+                  }
+                  rightIcon={{
+                    type: 'ionicon',
+                    name: secure ? 'eye-off' : 'eye',
+                    onPress: () => setSecure(!secure),
+                  }}
+                />
 
-              <View style={styles.bottomContainer}>
+                <View style={styles.bottomContainer}>
+                  <AppButton
+                    buttonStyle={styles.signUpButton}
+                    titleStyle={styles.signupText}
+                    title={FORGOT_PASSWORD}
+                    onPress={handleForgotPassword}
+                  />
+                </View>
+
                 <AppButton
-                  buttonStyle={styles.signUpButton}
-                  titleStyle={styles.signupText}
-                  title={FORGOT_PASSWORD}
-                  onPress={handleForgotPassword}
+                  containerStyle={styles.buttonStyle}
+                  title={LOGIN}
+                  onPress={() => handleSubmit()}
+                  loading={isLoading}
                 />
               </View>
-
-              <AppButton
-                containerStyle={styles.buttonStyle}
-                title={LOGIN}
-                onPress={() => handleSubmit()}
-                loading={isLoading}
-              />
-            </View>
-          )}
-        </Formik>
-      </View>
+            )}
+          </Formik>
+        </View>
+      </AppGradient>
     </KeyboardAwareScrollView>
   );
 };

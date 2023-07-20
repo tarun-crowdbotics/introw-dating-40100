@@ -3,5 +3,6 @@ export const FontSizes = {
   S14: 14,
   S15: 15,
   S18: 18,
+  S24: 24,
   S34: 34,
 };
